@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milk Gallery | Admin Portal</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+
+    <!-- PASSWORD LOGIN WALL -->
+    <div id="loginGate" class="gate-overlay">
+        <div class="gate-card">
+            <div class="gate-icon"><i class="fa-solid fa-user-shield"></i></div>
+            <h2>Admin Gateway</h2>
+            <p>Please verify your identity to access the controls.</p>
+            <div class="input-container">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="gatePassword" placeholder="Enter Access Code">
+            </div>
+            <button onclick="verifyGatePassword()" class="btn-gate">Access Dashboard</button>
+            <a href="index.html" class="back-to-store"><i class="fa-solid fa-arrow-left"></i> Back to Store</a>
+        </div>
+    </div>
+
+    <!-- MAIN ADMIN CONTROL PANEL (Locked by default) -->
+    <div id="adminDashboard" class="admin-dashboard-container hidden">
+        <aside class="admin-sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-sliders"></i>
+                <span>Control Panel</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#" class="active"><i class="fa-solid fa-house-chimney-window"></i> Overview</a>
+                <button onclick="lockDashboard()" class="logout-btn"><i class="fa-solid fa-power-off"></i> Lock Panel</button>
+            </nav>
+        </aside>
+
+        <main class="admin-main">
+            <!-- Header with Dark/Light Toggle -->
+            <header class="admin-topbar">
+                <h2>Storefront Customizer</h2>
+                <div class="theme-toggle-area">
+                    <span id="themeLabel">Dark Mode</span>
+                    <label class="switch">
+                        <input type="checkbox" id="themeCheckbox" onchange="toggleAdminTheme()">
+                        <span class="slider round"></span>
+                    </label>
+                </div>
+            </header>
+
+            <div class="admin-grid">
+                <!-- Change Password Widget -->
+                <div class="admin-widget">
+                    <div class="widget-header">
+                        <div class="widget-icon"><i class="fa-solid fa-key"></i></div>
+                        <h3>Change Credentials</h3>
+                    </div>
+                    <p class="widget-desc">Aap is admin panel ka password yahan se tabdeel kar sakte hain.</p>
+                    <div class="input-field">
+                        <label>New Secret Password</label>
+                        <input type="password" id="adminNewPass" placeholder="Enter new password">
+                    </div>
+                    <button onclick="saveNewPassword()" class="btn-widget-primary">Save Changes</button>
+                </div>
+
+                <!-- Update Images Widget -->
+                <div class="admin-widget">
+                    <div class="widget-header">
+                        <div class="widget-icon"><i class="fa-solid fa-photo-film"></i></div>
+                        <h3>Upload Product Images</h3>
+                    </div>
+                    <p class="widget-desc">Apne computer/mobile se nayi tasveerein select karke website par lagayein.</p>
+                    
+                    <div class="input-field">
+                        <label>Doodh Wali Image (Card 1)</label>
+                        <input type="file" id="fileUpload1" accept="image/*" class="file-picker">
+                    </div>
+
+                    <div class="input-field">
+                        <label>Makkhan/Ghee Wali Image (Card 2)</label>
+                        <input type="file" id="fileUpload2" accept="image/*" class="file-picker">
+                    </div>
+                    
+                    <button onclick="publishImages()" class="btn-widget-success">Publish Live</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
